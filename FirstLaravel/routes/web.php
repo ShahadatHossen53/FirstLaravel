@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Example\FirstController;
+use App\Http\Controllers\Shahadat;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,17 +20,38 @@ Route::get('/', function () {
 });
 
 
-Route::get('/hi', function(){
-    return view('testabout');
-});
+// Route::get('/hi', function(){
+//     return view('testabout')->name('testabout.us');
+// });
 
-Route::get('/about', function(){
-    return view('about');
-});
+Route::get('/country', function(){
+    return view('country');
+})->middleware('country');
 
-Route::get('/contact', function(){
-    return view('contact');
-});
+// Route::get(md5('/aboutlskjfldkjflskj'), function(){
+//     return view('about');
+// })->name('about.us');
+
+// Route::get('/contact', function(){
+//     return view('contact');
+// });
+
+Route::get('/About-Us', [FirstController::class, 'about_us'])->name('about.us');
+Route::get('/Contact-Us', [FirstController::class, 'contact_us'])->name('contact.us');
+
+
+Route::post('/Student', [FirstController::class, 'studentStore'])->name('student.store');
+Route::post('/Form validation', [FirstController::class, 'myformvalid'])->name('myform.valid');
+
+Route::get('/Form', [FirstController::class, 'myform'])->name('myform.us');
+
+Route::get('/Show Data', [FirstController::class, 'show_data'])->name('mydata.us');
+
+
+Route::get('/country', [FirstController::class, 'country'])->name('country')->middleware('country');
+
+
+Route::get('/Test-about', Shahadat::class)->name('testabout.us');
 
 
 require __DIR__.'/auth.php';

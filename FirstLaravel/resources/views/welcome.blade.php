@@ -15,8 +15,10 @@
     <body class="antialiased">
         <h1>This is home page</h1>
         <ul>
-            <li><a href="{{ url('about')}}">About</a></li>
-            <li><a href="{{ url('contact')}}">Contact</a></li>
+            <li><a href="{{ route('about.us')}}">About</a></li>
+            <li><a href="{{ route('contact.us')}}">Contact</a></li>
+            <li><a href="{{ route('mydata.us')}}">Show Data</a></li>
+            <li><a href="{{ route('myform.us')}}">Form</a></li>
         </ul>
     </body>
 </html>
